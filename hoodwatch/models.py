@@ -4,6 +4,15 @@ from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 import datetime as dt
 
+@receiver(post_save,sender=User)
+def create_profile(sender, instance,created,**kwargs):
+   if created:
+       Profile.objects.create(user=instance)
+
+@receiver(post_save,sender=User)
+def save_profile(sender, instance,**kwargs):
+   instance.profile.save()
+   
 # Create your models here.
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -12,42 +21,24 @@ class Profile(models.Model):
     prof_pic = models.ImageField(upload_to= 'profiles/', blank=True,default="profile/a.jpg")
     bio = models.CharField(max_length=800,default="Welcome Me!")
 
-
-    @receiver(post_save, sender=User)
-    def create_user_profile(sender, instance, created, **kwargs):
-        if created:
-            Profile.objects.create(user=instance)
-
     def post(self, form):
         image = form.save(commit=False)
         image.user = self
         image.save()
 
-class Post(models.Model):
-    sitename=models.CharField(max_length=50)
-    url = models.CharField(max_length=50)
-    Description=models.CharField(max_length=800)
-    image = models.FileField(upload_to='posts/')
-    post_date = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE)
-    Technology = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
-
-    class Meta:
-        ordering = ["-pk"]
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length = 65)
     locations = (
         ('Nairobi', 'Nairobi'),
-        ('Zurich', 'Zurich'),
-        ('Paris', 'Paris'),
-        ('Munich', 'Munich'),
-        ('Tokyo', 'Tokyo'),
-        ('London', 'London'),
-        ('Melbourne', 'Melbourne'),
-        ('Sydney', 'Sydney'),
-        ('Berlin', 'Berlin')
+        ('Mombasa', 'Mombasa'),
+        ('Kisumu', 'Kisumu'),
+        ('Eldoret', 'Eldoret'),
+        ('Naivasha', 'Naivasha'),
+        ('Kakamega', 'Kakamega'),
+        ('Kakamega', 'Kakamega'),
+        ('Kisii', 'Kisii'),
+        ('Mandera', 'Mandera')
     )
     loc  = models.CharField(max_length=65, choices=locations)
     occupants = models.PositiveIntegerField()
@@ -70,6 +61,16 @@ class Neighbourhood(models.Model):
 
     def delete_hood(self):
         self.delete()
+class Post(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(max_length=300)
+    hood = models.ForeignKey(Neighbourhood, blank=True,on_delete=models.CASCADE)
+    title = models.CharField(max_length = 65)
+        
+    def __str__(self):
+        return self.description
+
 
 class Business(models.Model):
     name = models.CharField(max_length = 65)
@@ -87,8 +88,3 @@ class Business(models.Model):
 
     def delete_business(self):
         self.delete()
-
-    @classmethod
-    def get_biz(cls, hood):
-        hoods = Business.objects.filter(hood_id=Neighbourhood)
-        return hoods

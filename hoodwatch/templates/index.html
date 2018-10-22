@@ -4,7 +4,7 @@
 
 <html>
 
-<body >
+<body style="background-color:rgb(14, 12, 12);">
     <div class="container-fluid" style="margin-top:48px;background-image:url(/static/images/Neighbourhood-Plan-1200-x-400.gif);height:45vh;">
         <div style="float: right; color: rgb(240, 5, 103);font-family: 'Charmonman', cursive;">
             <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
@@ -12,18 +12,34 @@
                     id="search">
             </form>
         </div>
-        <img src="/static/images/navbar/NW-O-medium.png" alt="">
+        <img  class="img-fluid" src="/static/images/navbar/NW-O-medium.png" alt="">
         <strong class="text2">Neighborhood Watch</strong>
     </div>
-    <div class="container-fluid" style="background-color:rgb(14, 12, 12); height: 100vh;">
+    <div class="container-fluid">
         <div class="container">
-            <div class="row" style="padding-top: 30px; ">
-                <div class="col-sm-4 col-md-4"></div>
-                <div class="col-sm-4 col-md-4" style="background-color:white;text-align:center; padding:20px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
-                    <a href="{%url 'new-post'%}">Create Post</a>
-                    <a href="{%url 'new-hood'%}">Create Hood</a>
+            <div class="row" style="padding-top: 30px;font-family: 'Raleway', sans-serif; ">
+                <div class="col-sm-5 col-md-5"></div>
+                <div class="col-sm-2 col-md-2" style="background-color:white;text-align:center; padding:20px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
+                    <!-- <a href="{%url 'new-post'%}">Create Post</a> <br> -->
+                    <a href="{% url 'createHood' %}">Create Hood</a></i>
                 </div>
-                <div class="col-sm-4 col-md-4"></div>
+                <div class="col-sm-5 col-md-5"></div>
+            </div>
+            <div class="row"  style="padding-top:15px; font-family: 'Raleway', sans-serif;">
+                {% for hood in hoods %}
+                <div class="col-md-3" style="margin-bottom:10px;">
+                    <div class="card" style="background-color:white;">
+                        <div  class="card-header">
+                            <h6> <strong>{{hood.name.capitalize}}</strong></h6>
+                        </div>
+                        <div class="card-body" style="width: auto">
+                            <img src="{{hood.image}}" alt="">
+                            <p> <i class="fa fa-map-marker" aria-hidden="true"> {{ hood.loc }}</i></p>
+                            <a href=" {% url 'joinHood' hood.id %}" class="btn btn-sm btn-success">Join</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

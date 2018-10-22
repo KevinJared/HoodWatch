@@ -1,6 +1,5 @@
 from django import forms
 from .models import *
-
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -11,12 +10,7 @@ class UserForm(forms.ModelForm):
         model = Profile
         fields = ('name','user_name','bio')
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        exclude = ['user']
-
-class NewHoodForm(forms.ModelForm):
+class CreateHoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
-        fields = ('name', 'loc')
+        fields = ['name','loc','occupants']
