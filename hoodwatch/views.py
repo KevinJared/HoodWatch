@@ -1,10 +1,10 @@
-from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponse, Http404,HttpResponseRedirect
-from hoodwatch.models import Post, Profile, Neighbourhood
-from django.contrib.auth.models import User
-from .forms import NewPostForm, UserForm,CreateHoodForm
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-import datetime as dt
+from django.http import HttpResponse
+from .models import Post,Profile,Neighbourhood,Business,Join
+from django.contrib import messages
+from . forms import NewPostForm,UserForm,CreateHoodForm,ProfileForm
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -87,4 +87,5 @@ def join(request, hoodId):
 
         Join(user_id=request.user, hood_id=neighbourhood).save()
 
-    return redirect('index')
+    messages.success(request, 'Success! You have succesfully joined this Neighbourhood ')
+    return redirect('hoods')
