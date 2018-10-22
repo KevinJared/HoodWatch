@@ -14,15 +14,14 @@
 
 </head>
 {% block content %}
-<body>
-  <div class="container" style="padding-top:30px;background-color:rgb(14, 12, 12);">
+<body style="background-color:rgb(14, 12, 12);">
+  <div class="container" style="padding-top:30px; margin-top:60px; color:white;">
     <form action="{%url 'new-hood'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
 
       {% bootstrap_form form%}
       <input type="submit" class="btn btn-success btn-lg" value="Post">
     </form>
-
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/static/js/scripts.js"></script>
@@ -31,8 +30,6 @@
 
   </div>
 </body>
-<div style="background-color: white;   height: 100px; bottom: 0; width: 100%;">
-</div>
 
 </html>
 
