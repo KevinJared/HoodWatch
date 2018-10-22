@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link href="https://fonts.googleapis.com/css?family=Krub" rel="stylesheet">
+<div class="jumbotron" style="font-family: 'Krub', sans-serif;background-color:rgb(243, 243, 243);">
+    <div class="container" style="display: block;">
+        <a href="{% url 'updateprofile' %}"><button class="btn">EDIT PROFILE</button></a>
+        <div class="row" style="text-align:center;">
+            <img class="img-responsive" src="{{ user.profile.prof_pic.url }}" style="margin-left: auto;margin-right: auto;width: 150px; border-radius:50%; height:150px;">
+        </div>
+        <div class="username" style="margin-top:30px;">
+            <h4><strong>{{ user.username }}</strong></h4>
+            &nbsp;<p><strong>Bio</strong> {{user.profile.bio}}</p>
+        </div>
+        <div class="row" style="margin-top: 15px;border-top:1px solid rgb(223, 221, 221); padding-top:20px;">
+            {% for image in images %}
+            <div class="col-md-4" style="margin-bottom:15px;">
+                <div class="body">
+                    <img type="" class="img-responsive" class="img-responsive" src="{{image.image.url }}" alt="" width="100%"
+                        ; height="200px" ;>
+                </div>
+                <div class="card-header" style="background-color:white; font-size: 13px;">
+                    <p><strong>{{image.sitename}}</strong></p>
+                    <p>{{image.Description}}</p>
+                    From {{image.country}} &nbsp; &nbsp; &nbsp; {{image.post_date}}
+                </div>
+                <div class="card-footer" style="background-color:white;">
+                    <p>By <strong>{{image.user}}</strong></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{%endblock%}
