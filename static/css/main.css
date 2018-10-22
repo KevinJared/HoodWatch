@@ -1,0 +1,15 @@
+.text2 {
+    font-family: 'Righteous', cursive;
+    font-size: 4rem;
+    color: rgb(17, 16, 16);
+    text-shadow: 
+      0 .5rem .5rem #fff,
+      0 .5rem 1rem #fff,
+      0 .5rem 2rem #8938E6,
+      0 .5rem 3rem #8938E6,
+      0 .5rem 4rem #8938E6,
+      0 .5rem 5rem #8938E6,
+      0 .5rem 6rem #8938E6,
+      0 .5rem 7rem #8938E6,
+      0 .5rem 8rem #8938E6;
+  }
