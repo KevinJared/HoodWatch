@@ -12,15 +12,18 @@ class UserForm(forms.ModelForm):
         model = Profile
         fields = ('name','user_name','bio')
 
+
 class CreateHoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
         fields = ['name','loc','occupants']
 
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['name','bio']
+
 
 class BusinessForm(forms.ModelForm):
     class Meta:

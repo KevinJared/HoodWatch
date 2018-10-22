@@ -83,6 +83,7 @@ def search(request):
   
 @login_required(login_url = '/accounts/login')
 def all_hoods(request):
+
     if request.user.is_authenticated:
         if Join.objects.filter(user_id=request.user).exists():
             hood = Neighbourhood.objects.get(pk=request.user.join.hood_id.id)
