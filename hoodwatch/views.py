@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
 from hoodwatch.models import Post, Profile
 from django.contrib.auth.models import User
-from .forms import NewPostForm, UserForm, ProfileForm 
+from .forms import NewPostForm, UserForm, ProfileForm ,NewHoodForm
 from django.contrib.auth.decorators import login_required
 import datetime as dt
 
@@ -47,6 +47,22 @@ def new_post(request):
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form":form})
+
+@login_required(login_url='/accounts/login/')
+def new_hood(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewHoodForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+            return redirect('index')
+    else:
+        form = NewHoodForm()
+    return render(request, 'new_hood.html', {"form":form})
+
 
 def search_results(request):
 

@@ -4,9 +4,9 @@
 
 <html>
 
-<body style="background-color:rgb(14, 12, 12); ">
-    <div class="container-fluid" style="margin-top:48px;background-image:url(/static/images/Neighbourhood-Plan-1200-x-400.gif);height:45vh;font-family: 'Charmonman', cursive;">
-        <div style="float: right; color: rgb(240, 5, 103);">
+<body >
+    <div class="container-fluid" style="margin-top:48px;background-image:url(/static/images/Neighbourhood-Plan-1200-x-400.gif);height:45vh;">
+        <div style="float: right; color: rgb(240, 5, 103);font-family: 'Charmonman', cursive;">
             <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
                 <input type="text" class="form-control my-2 my-sm-0 search-input" name="search" placeholder="Search.."
                     id="search">
@@ -15,13 +15,16 @@
         <img src="/static/images/navbar/NW-O-medium.png" alt="">
         <strong class="text2">Neighborhood Watch</strong>
     </div>
-    <div class="container">
-        <div class="row" style="padding-top: 30px; ">
-            <div class="col-sm-4 col-md-4"></div>
-            <div class="col-sm-4 col-md-4" style="background-color:white;text-align:center; padding:20px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
-                <a href="{%url 'new-post'%}">Create Post</a>
+    <div class="container-fluid" style="background-color:rgb(14, 12, 12); height: 100vh;">
+        <div class="container">
+            <div class="row" style="padding-top: 30px; ">
+                <div class="col-sm-4 col-md-4"></div>
+                <div class="col-sm-4 col-md-4" style="background-color:white;text-align:center; padding:20px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
+                    <a href="{%url 'new-post'%}">Create Post</a>
+                    <a href="{%url 'new-hood'%}">Create Hood</a>
+                </div>
+                <div class="col-sm-4 col-md-4"></div>
             </div>
-            <div class="col-sm-4 col-md-4"></div>
         </div>
     </div>
 </body>

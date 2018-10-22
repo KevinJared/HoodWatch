@@ -15,3 +15,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ['user']
+
+class NewHoodForm(forms.ModelForm):
+    class Meta:
+        model = Neighbourhood
+        fields = ('name', 'loc')
