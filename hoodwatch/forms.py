@@ -1,5 +1,7 @@
 from django import forms
 from .models import *
+
+
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -20,3 +22,7 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ['name','bio']
 
+class BusinessForm(forms.ModelForm):
+    class Meta:
+        model  = Business
+        fields = ['name','hood','email']

@@ -10,7 +10,7 @@ urlpatterns=[
     url(r'^createHood/$', views.createHood, name='createHood'),
     url(r'^update/profile$', views.updateprofile, name='updateprofile'),
     url(r'^join/(\d+)', views.join, name='joinHood'),
-    url(r'^search/', views.search_results, name='search_results')
+   url(r'^search/$', views.search, name='search'),
 ]
 if settings.DEBUG:
     urlpatterns+=static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

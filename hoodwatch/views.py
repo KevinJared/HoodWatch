@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from hoodwatch.models import Post,Profile,Neighbourhood,Business,Join
 from django.http import HttpResponse
 from .models import Post,Profile,Neighbourhood,Business,Join
 from django.contrib import messages
@@ -8,8 +9,9 @@ from django.contrib.auth.models import User
 
 
 def index(request):
-    posts = Post.objects.all()
     hoods = Neighbourhood.objects.all()
+    business = Business.objects.all()
+    posts = Post.objects.all()
     return render(request, 'index.html',locals())
 
 @login_required(login_url='/accounts/login/')
@@ -33,6 +35,7 @@ def updateprofile(request):
 	else:
 			form = ProfileForm()
 	return render(request, 'updateprofile.html',{"form":form })
+
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -63,18 +66,58 @@ def createHood(request):
         form = CreateHoodForm()
         return render(request,'new_hood.html',{"form":form})
 
-def search_results(request):
+def search(request):
 
-    if 'profile' in request.GET and request.GET["profile"]:
-        search_term = request.GET.get("profile")
-        searched_profiles = Profile.search_by_user(search_term)
+    if request.GET['hoods']:
+        search_term = request.GET.get("hoods")
+        hoods = Neighbourhood.search_hood(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"profile": searched_profiles})
+        return render(request,'search.html',locals())
 
     else:
-        message = "You haven't searched for any term"
-        return render(request, 'search.html',{"message":message})
+        message = "You Haven't searched for any item"
+        return render(request,'search.html',locals())
+
+
+  
+@login_required(login_url = '/accounts/login')
+def all_hoods(request):
+    if request.user.is_authenticated:
+        if Join.objects.filter(user_id=request.user).exists():
+            hood = Neighbourhood.objects.get(pk=request.user.join.hood_id.id)
+            businesses = Business.objects.filter(hood=request.user.join.hood_id.id)
+            posts = Post.objects.filter(hood=request.user.join.hood_id.id)
+            print(posts)
+            return render(request, "hood.html", locals())
+        else:
+            neighbourhoods = Neighbourhood.objects.all()
+            return render(request, 'hood.html', locals())
+    else:
+        neighbourhoods = Neighbourhood.objects.all()
+
+        return render(request, 'hood.html', locals())
+
+
+
+def create_business(request):
+    current_user = request.user
+    print(Profile.objects.all())
+    owner = Profile.get_by_id(current_user)
+    # this_hood = Neighbourhood.objects.all()
+    if request.method == 'POST':
+        form = BusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_biz=form.save(commit=False)
+            new_biz.user = current_user
+            # new_biz.hood =this_hood
+            new_biz.save()
+            return redirect(home)
+    else:
+        form = BusinessForm()
+    return render(request,"businessform.html",locals())
+
+
 
 
 @login_required(login_url='/accounts/login/')
