@@ -1,15 +1,16 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse, Http404,HttpResponseRedirect
-from hoodwatch.models import Post, Profile
+from hoodwatch.models import Post, Profile, Neighbourhood
 from django.contrib.auth.models import User
-from .forms import NewPostForm, UserForm, ProfileForm ,NewHoodForm
+from .forms import NewPostForm, UserForm,CreateHoodForm
 from django.contrib.auth.decorators import login_required
 import datetime as dt
 
 
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'index.html',{"posts": posts})
+    hoods = Neighbourhood.objects.all()
+    return render(request, 'index.html',locals())
 
 @login_required(login_url='/accounts/login/')
 def profile(request,user_id=None):
@@ -49,20 +50,18 @@ def new_post(request):
     return render(request, 'new_post.html', {"form":form})
 
 @login_required(login_url='/accounts/login/')
-def new_hood(request):
-    current_user = request.user
+def createHood(request):
     if request.method == 'POST':
-        form = NewHoodForm(request.POST, request.FILES)
-
+        form = CreateHoodForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.user = current_user
-            post.save()
-            return redirect('index')
+            hood = form.save(commit = False)
+            hood.user = request.user
+            hood.save()
+       
+        return redirect('index')
     else:
-        form = NewHoodForm()
-    return render(request, 'new_hood.html', {"form":form})
-
+        form = CreateHoodForm()
+        return render(request,'new_hood.html',{"form":form})
 
 def search_results(request):
 
@@ -76,3 +75,16 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+
+@login_required(login_url='/accounts/login/')
+def join(request, hoodId):
+    neighbourhood = Neighbourhood.objects.get(pk=hoodId)
+    if Join.objects.filter(user_id=request.user).exists():
+
+        Join.objects.filter(user_id=request.user).update(hood_id=neighbourhood)
+    else:
+
+        Join(user_id=request.user, hood_id=neighbourhood).save()
+
+    return redirect('index')
