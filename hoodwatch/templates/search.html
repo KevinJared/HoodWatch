@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{% block content %}
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<div class="container" style="font-size:14px; color:crimson; font-family: 'Raleway', sans-serif; margin-top:50px;">
+
+  <div class="row">
+    {% if user%}
+    <h2>Found {{ profile|length }} named {{message}}</h2>
+    {% else %}
+    <h2> There is no user by this name {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row" style="font-family: 'Montserrat', sans-serif;">
+
+    {% for post in posts %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card border-0 transform-on-hover">
+        <a class="lightbox" href="">
+          <a href="{%url 'profile' user_id%}"><img class="img-responsive" src="{{ user.profile.prof_pic.url }}" style="width:50px; border-radius:50%"></a>
+        </a>
+        <div class="card-body">
+          <a href="">
+            <h4>{{post.user}}</h4>
+          </a>
+          <p class="text-muted card-text">{{ post.caption }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
