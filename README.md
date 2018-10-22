@@ -47,7 +47,7 @@ CREATE DATABASE hood;
 ```
 ### Run initial Migration
 ```bash
-python3.6 manage.py makemigrations gallery
+python3.6 manage.py makemigrations hoodwatch
 python3.6 manage.py migrate
 ```
 
