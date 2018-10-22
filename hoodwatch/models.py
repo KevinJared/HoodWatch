@@ -24,14 +24,12 @@ class Profile(models.Model):
         image.save()
 
 class Post(models.Model):
-    sitename=models.CharField(max_length=50)
-    url = models.CharField(max_length=50)
+    title =models.CharField(max_length=50)
     Description=models.CharField(max_length=800)
     image = models.FileField(upload_to='posts/')
     post_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE)
-    Technology = models.CharField(max_length=50)
-    country = models.CharField(max_length=50)
+
 
     class Meta:
         ordering = ["-pk"]
