@@ -15,7 +15,7 @@
 </head>
 {% block content %}
 
-<body>
+<body style="background-color:rgb(14, 12, 12);color: white;">
   <div class="container" style="padding-top:30px;">
     <form action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
@@ -32,8 +32,6 @@
 
   </div>
 </body>
-<div style="background-color: white;   height: 100px; bottom: 0; width: 100%;">
-</div>
 
 </html>
 
