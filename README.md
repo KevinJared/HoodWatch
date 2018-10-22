@@ -41,7 +41,7 @@ Install dependancies that will create an environment for the app to run
 ### Create the Database
 ```bash
 psql
-CREATE DATABASE gallery;
+CREATE DATABASE hood;
 ```
 
 ```
