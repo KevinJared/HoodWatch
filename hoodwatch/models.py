@@ -29,7 +29,6 @@ class Post(models.Model):
     image = models.FileField(upload_to='posts/')
     post_date = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(User, related_name="posted_by", on_delete=models.CASCADE)
-
-
+    
     class Meta:
         ordering = ["-pk"]

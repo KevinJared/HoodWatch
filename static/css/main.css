@@ -2,14 +2,41 @@
     font-family: 'Righteous', cursive;
     font-size: 4rem;
     color: rgb(17, 16, 16);
-    text-shadow: 
-      0 .5rem .5rem #fff,
-      0 .5rem 1rem #fff,
-      0 .5rem 2rem #8938E6,
-      0 .5rem 3rem #8938E6,
-      0 .5rem 4rem #8938E6,
-      0 .5rem 5rem #8938E6,
-      0 .5rem 6rem #8938E6,
-      0 .5rem 7rem #8938E6,
-      0 .5rem 8rem #8938E6;
-  }
+    text-shadow:
+        0 .5rem .5rem #fff,
+        0 .5rem 1rem #fff,
+        0 .5rem 2rem #8938E6,
+        0 .5rem 3rem #8938E6,
+        0 .5rem 4rem #8938E6,
+        0 .5rem 5rem #8938E6,
+        0 .5rem 6rem #8938E6,
+        0 .5rem 7rem #8938E6,
+        0 .5rem 8rem #8938E6;
+}
+
+.navigation {
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: crimson;
+    box-shadow: 0 4px 4px -3px #232323;
+    -moz-box-shadow: 0 4px 4px -3px #232323;
+    -webkit-box-shadow: 0 4px 4px -3px #232323;
+    padding-top: 10px;
+    font-family: "Lato", sans-serif;
+    position: fixed;
+}
+
+.navigation a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+
+}
+a:hover{
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+
+}
