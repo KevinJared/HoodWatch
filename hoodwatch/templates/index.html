@@ -4,8 +4,8 @@
 
 <html>
 
-<body>
-    <div class="container-fluid" style="margin-top:50px;background-image:url(/static/images/Neighbourhood-Plan-1200-x-400.gif);height:50vh;font-family: 'Charmonman', cursive; border-bottom:1px solid rgb(240, 239, 239);">
+<body style="background-color:rgb(14, 12, 12); ">
+    <div class="container-fluid" style="margin-top:48px;background-image:url(/static/images/Neighbourhood-Plan-1200-x-400.gif);height:45vh;font-family: 'Charmonman', cursive;">
         <div style="float: right; color: rgb(240, 5, 103);">
             <form class="form-inline my-2 my-lg-0" role="search" action="{% url 'search_results' %}">
                 <input type="text" class="form-control my-2 my-sm-0 search-input" name="search" placeholder="Search.."
@@ -15,15 +15,13 @@
         <img src="/static/images/navbar/NW-O-medium.png" alt="">
         <strong class="text2">Neighborhood Watch</strong>
     </div>
-    <div class="jumbotron" style="font-family: 'Raleway', sans-serif;">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4 col-md-4"></div>
-                <div class="col-sm-4 col-md-4" style="text-align:center; padding:30px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
-                    <a href="{%url 'new-post'%}">Create Post</a>
-                </div>
-                <div class="col-sm-4 col-md-4"></div>
+    <div class="container">
+        <div class="row" style="padding-top: 30px; ">
+            <div class="col-sm-4 col-md-4"></div>
+            <div class="col-sm-4 col-md-4" style="background-color:white;text-align:center; padding:20px; border: 1px solid rgb(240, 5, 103); border-radius: 10px;">
+                <a href="{%url 'new-post'%}">Create Post</a>
             </div>
+            <div class="col-sm-4 col-md-4"></div>
         </div>
     </div>
 </body>
