@@ -6,9 +6,10 @@ from django.conf.urls.static import static
 urlpatterns=[
     url('^$',views.index,name = 'index'),
     url(r'^new/post$', views.new_post, name='new-post'),
-    url(r'^new/hood$', views.new_hood, name='new-hood'),
     url(r'^profile/(?P<user_id>\d+)?$', views.profile, name='profile'),
-    url(r'^update/profile$', views.updateprofile, name='updateprofile'), 
+    url(r'^createHood/$', views.createHood, name='createHood'),
+    url(r'^update/profile$', views.updateprofile, name='updateprofile'),
+    url(r'^join/(\d+)', views.join, name='joinHood'),
     url(r'^search/', views.search_results, name='search_results')
 ]
 if settings.DEBUG:
