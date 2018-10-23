@@ -52,11 +52,12 @@ class Neighbourhood(models.Model):
     def delete_hood(self):
         self.delete()
 class Post(models.Model):
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    description = models.TextField(max_length=300)
-    hood = models.ForeignKey(Neighbourhood, blank=True,on_delete=models.CASCADE)
     title = models.CharField(max_length = 65)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    hood = models.ForeignKey(Neighbourhood, blank=True)
+    description = models.TextField(max_length=300)
+    
+    
         
     def __str__(self):
         return self.description
