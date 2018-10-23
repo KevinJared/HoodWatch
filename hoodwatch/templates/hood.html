@@ -71,21 +71,8 @@
                             </div>
                             <div class="card-body">
                                 <p>{{post.description}}
-                                    <p><a href="{% url 'comment' post_id=post.id %}"><i class="fa fa-comment"
+                                    <p><a href=""><i class="fa fa-"
                                                 aria-hidden="true" style="color:black;"></i>Add Comment</a></p>
-
-                                    {%if comments%}
-                                    <small>Comments</small>
-                                    {% for comment in comments %}
-                                    <p>{{ comment.comment }}</p>
-
-                                    {% endfor %}
-
-
-                                    {% else %}
-                                    <h4 class="text-center">No comments</h4>
-                                    {% endif %}
-                                    <hr>
                             </div>
                         </div>
                     </div>

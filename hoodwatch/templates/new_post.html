@@ -17,7 +17,7 @@
 
 <body style="background-color:rgb(228, 228, 228);">
   <div class="container" style="padding-top:60px;">
-    <form action="{%url 'new-post'%}" method="post" enctype="multipart/form-data">
+    <form action="{%url 'newpost'%}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
 
       {% bootstrap_form form%}

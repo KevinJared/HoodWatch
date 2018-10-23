@@ -36,7 +36,6 @@ class Neighbourhood(models.Model):
         ('Eldoret', 'Eldoret'),
         ('Naivasha', 'Naivasha'),
         ('Kakamega', 'Kakamega'),
-        ('Kakamega', 'Kakamega'),
         ('Kisii', 'Kisii'),
         ('Mandera', 'Mandera')
     )
