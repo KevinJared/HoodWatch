@@ -1,7 +1,7 @@
 {%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
-<div class="container-fluid" style="font-family: 'Raleway', sans-serif;  padding-top: 150px;">
+<div class="container-fluid" style="font-family: 'Raleway', sans-serif;  padding-top: 80px;">
   <div class="container">
     <!-- Empty div -->
     <div class="row">
@@ -10,12 +10,13 @@
         {% if form.errors %}
         <p> Password or Username is incorrect </p>
         {% endif %}
-        <div class="panel panel-default">
+        <div class="panel panel-default" style="border:1px solid rgb(231, 231, 231); border-radius:5px;">
 
-          <div class="panel-heading">
-            <h3 class="text-center">Sign In</h3>
+          <div class="panel-heading" style="background-color:rgb(231, 231, 231);  padding:10px;">
+            <h2><strong>Neigbourhood Watch</strong> </h2>
+            <h5 class="text-center">Sign In</h5>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="padding:10px;">
 
             <form action="/accounts/login/" method="post">
               {% csrf_token %}
@@ -38,7 +39,7 @@
     <!-- empty div -->
     <div class="col-md-2"></div>
   </div>
-  <div class="container-fluid" style="">
+  <div class="container-fluid">
     <img src="/static/images/streets-graphic-brn.png" alt="" width="100%;">
   </div>
 </div>
