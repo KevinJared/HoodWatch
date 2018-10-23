@@ -1,10 +1,17 @@
 {%extends "registration/base.html"%}
 {% load bootstrap4 %}
 {% block content %}
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+<!-- fonts -->
 <div class="container" style="font-family: 'Raleway', sans-serif; margin-top:50px;">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-6"></div>
+    <div class="col-md-6" style="background-image:url(https://i.gifer.com/CeD.gif); background-repeat: no-repeat; background-size: cover;">
+      <div class="hello" style="font-family: 'Dancing Script', cursive;">
+        <h3>Neigbourhood Watch.</h3>
+      </div>
+    </div>
     <div class="col-md-4">
       {% if form.errors %}
       <p> Some Information Might be Incorrect </p>
@@ -57,6 +64,166 @@
     visibility: hidden;
     display: none;
     margin-top: 0px;
+  }
+
+  *,
+  *:after,
+  *:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hello {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 25%;
+  }
+
+  .hello h3 {
+    position: relative;
+    color: #221086;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 60px;
+    letter-spacing: 0.0625em;
+    width: calc(20ch + 20*0.0625em);
+  }
+
+  .hello h3:after {
+    display: block;
+    position: absolute;
+    content: '';
+    width: calc(20ch + 20*0.0625em);
+    height: 2ex;
+    left: 0;
+    top: 0;
+    background: #eff5ed;
+    animation: 0.6s blink 20, move 3s 1.5s forwards steps(1);
+    border-left: 1px solid #dddee2;
+    box-shadow: 0px 1ex 0px 0px #eff5ed;
+  }
+
+  @keyframes move {
+    5% {
+      width: calc(calc(20ch + 20*0.0625em) - (1ch + 1*0.0625em));
+      left: calc(1ch + 1*0.0625em);
+    }
+
+    10% {
+      width: calc(calc(20ch + 20*0.0625em) - (2ch + 2*0.0625em));
+      left: calc(2ch + 2*0.0625em);
+    }
+
+    15% {
+      width: calc(calc(20ch + 20*0.0625em) - (3ch + 3*0.0625em));
+      left: calc(3ch + 3*0.0625em);
+    }
+
+    20% {
+      width: calc(calc(20ch + 20*0.0625em) - (4ch + 4*0.0625em));
+      left: calc(4ch + 4*0.0625em);
+    }
+
+    25% {
+      width: calc(calc(20ch + 20*0.0625em) - (5ch + 5*0.0625em));
+      left: calc(5ch + 5*0.0625em);
+    }
+
+    30% {
+      width: calc(calc(20ch + 20*0.0625em) - (6ch + 6*0.0625em));
+      left: calc(6ch + 6*0.0625em);
+    }
+
+    35% {
+      width: calc(calc(20ch + 20*0.0625em) - (7ch + 7*0.0625em));
+      left: calc(7ch + 7*0.0625em);
+    }
+
+    40% {
+      width: calc(calc(20ch + 20*0.0625em) - (8ch + 8*0.0625em));
+      left: calc(8ch + 8*0.0625em);
+    }
+
+    45% {
+      width: calc(calc(20ch + 20*0.0625em) - (9ch + 9*0.0625em));
+      left: calc(9ch + 9*0.0625em);
+    }
+
+    50% {
+      width: calc(calc(20ch + 20*0.0625em) - (10ch + 10*0.0625em));
+      left: calc(10ch + 10*0.0625em);
+    }
+
+    55% {
+      width: calc(calc(20ch + 20*0.0625em) - (11ch + 11*0.0625em));
+      left: calc(11ch + 11*0.0625em);
+    }
+
+    60% {
+      width: calc(calc(20ch + 20*0.0625em) - (12ch + 12*0.0625em));
+      left: calc(12ch + 12*0.0625em);
+    }
+
+    65% {
+      width: calc(calc(20ch + 20*0.0625em) - (13ch + 13*0.0625em));
+      left: calc(13ch + 13*0.0625em);
+    }
+
+    70% {
+      width: calc(calc(20ch + 20*0.0625em) - (14ch + 14*0.0625em));
+      left: calc(14ch + 14*0.0625em);
+    }
+
+    75% {
+      width: calc(calc(20ch + 20*0.0625em) - (15ch + 15*0.0625em));
+      left: calc(15ch + 15*0.0625em);
+    }
+
+    80% {
+      width: calc(calc(20ch + 20*0.0625em) - (16ch + 16*0.0625em));
+      left: calc(16ch + 16*0.0625em);
+    }
+
+    85% {
+      width: calc(calc(20ch + 20*0.0625em) - (17ch + 17*0.0625em));
+      left: calc(17ch + 17*0.0625em);
+    }
+
+    90% {
+      width: calc(calc(20ch + 20*0.0625em) - (18ch + 18*0.0625em));
+      left: calc(18ch + 18*0.0625em);
+    }
+
+    95% {
+      width: calc(calc(20ch + 20*0.0625em) - (19ch + 19*0.0625em));
+      left: calc(19ch + 19*0.0625em);
+    }
+
+    100% {
+      width: calc(calc(20ch + 20*0.0625em) - (20ch + 20*0.0625em));
+      left: calc(20ch + 20*0.0625em);
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      border-left-color: #e5e6e9;
+    }
+
+    50% {
+      border-left-color: #e5e6e9;
+    }
+
+    51% {
+      border-left-color: #eff5ed;
+    }
+
+    100% {
+      border-left-color: #eff5ed;
+    }
   }
 </style>
 {% endblock %}
