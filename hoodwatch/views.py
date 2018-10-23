@@ -47,7 +47,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-            return redirect('index')
+            return redirect('hoods')
     else:
         form = NewPostForm()
     return render(request, 'new_post.html', {"form":form})
