@@ -12,6 +12,7 @@ def index(request):
     hoods = Neighbourhood.objects.all()
     business = Business.objects.all()
     posts = Post.objects.all()
+    print(posts)
     return render(request, 'index.html',locals())
 
 @login_required(login_url='/accounts/login/')

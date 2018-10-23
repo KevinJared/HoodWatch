@@ -29,17 +29,7 @@ class Profile(models.Model):
 
 class Neighbourhood(models.Model):
     name = models.CharField(max_length = 65)
-    locations = (
-        ('Nairobi', 'Nairobi'),
-        ('Mombasa', 'Mombasa'),
-        ('Kisumu', 'Kisumu'),
-        ('Eldoret', 'Eldoret'),
-        ('Naivasha', 'Naivasha'),
-        ('Kakamega', 'Kakamega'),
-        ('Kisii', 'Kisii'),
-        ('Mandera', 'Mandera')
-    )
-    loc  = models.CharField(max_length=65, choices=locations)
+    location  = models.CharField(max_length=65)
     occupants = models.PositiveIntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -53,7 +43,7 @@ class Neighbourhood(models.Model):
 
 
     def __str__(self):
-        return f"{self.loc}"
+        return f"{self.location}"
 
 
     def save_hood(self):

@@ -16,7 +16,7 @@ class UserForm(forms.ModelForm):
 class CreateHoodForm(forms.ModelForm):
     class Meta:
         model = Neighbourhood
-        fields = ['name','loc','occupants']
+        fields = ['name','location','occupants']
 
 
 class ProfileForm(forms.ModelForm):
