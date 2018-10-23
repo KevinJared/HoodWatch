@@ -52,6 +52,7 @@ class Neighbourhood(models.Model):
         hoods = cls.objects.filter(name__icontains=search_term)
         return hoods
 
+
     def __str__(self):
         return f"{self.loc}"
 

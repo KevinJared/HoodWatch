@@ -1,34 +1,38 @@
-{%extends 'base.html'%}
-{% block content %}
-<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-<div class="container" style="font-size:14px; color:crimson; font-family: 'Raleway', sans-serif; margin-top:50px;">
+{%extends 'registration/base.html'%}
+{% load bootstrap4 %}
+{% block content%}
 
-  <div class="row">
-    {% if user%}
-    <h2>Found {{ profile|length }} named {{message}}</h2>
-    {% else %}
-    <h2> There is no user by this name {{message}}</h2>
-    {% endif %}
+    <div class="container">
+		<div class="row">
+		  <h3>Search results for the search term: <strong>{{message}}</strong></h3>
 
-  </div>
+		  {%if hoods%}
+		  	{% for hood in hoods %}
+				<div class="card">
 
-  <div class="row" style="font-family: 'Montserrat', sans-serif;">
+						<div class="card-title">
+							{{hood.name}}
+						</div>
+						<div class="card-body">
+							<p>{{hood.loc}}</p>
 
-    {% for post in posts %}
-    <div class="col-md-6 col-lg-4">
-      <div class="card border-0 transform-on-hover">
-        <a class="lightbox" href="">
-          <a href="{%url 'profile' user_id%}"><img class="img-responsive" src="{{ user.profile.prof_pic.url }}" style="width:50px; border-radius:50%"></a>
-        </a>
-        <div class="card-body">
-          <a href="">
-            <h4>{{post.user}}</h4>
-          </a>
-          <p class="text-muted card-text">{{ post.caption }}</p>
-        </div>
-      </div>
+						</div>
+
+				</div>
+
+		{%endfor%}
+		{% else %}
+		<div class="col-md-6">
+				<h4 class="text-center">No neighbourhood with the name <strong>{{message}}</strong> exists! You can however create it <a href="{% url 'createHood' %}">here</a></h4>
+			</div>
+		{%endif%}
+
+
+
+	</div>
     </div>
-    {% endfor %}
-  </div>
-</div>
-{% endblock %}
+
+
+
+
+{%endblock%}
